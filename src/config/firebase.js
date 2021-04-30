@@ -1,5 +1,8 @@
 import firebase from "firebase/app";
 
+import "firebase/firestore";
+import "firebase/auth";
+
 const firebaseApp = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -10,4 +13,10 @@ const firebaseApp = firebase.initializeApp({
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 });
 
+const db = firebase.firestore();
+const auth = firebase.auth();
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+
 export default firebaseApp;
+
+export { db, timestamp, auth };

@@ -1,0 +1,33 @@
+.editor {
+  height: 100%;
+  width: 80%;
+}
+
+.editor-head {
+  display: flex;
+  align-items: center;
+  background-color: #29487d;
+}
+
+.titleInput {
+  height: 25px;
+  width: calc(100% - 58px);
+  box-sizing: "border-box";
+  border: "none";
+  border-width: 0;
+  border-color: #29487d;
+  padding: 5px;
+  font-size: 24px;
+  background-color: #29487d;
+  color: white;
+}
+
+.titleInput:focus {
+  outline: none;
+}
+
+.editIcon {
+  box-sizing: "border-box";
+  color: white;
+  padding: 0 10px;
+}
