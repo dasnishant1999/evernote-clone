@@ -3,6 +3,7 @@ import { Context } from "../../contexts/Context";
 
 import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 import { ListItem, ListItemText } from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 import { removeHTMLTags } from "../../helpers";
 import "./SidebarItem.css";
 
@@ -16,9 +17,10 @@ function SidebarItem({ note, index }) {
           <ListItemText
             primary={note.title}
             secondary={
+              removeHTMLTags(note.body)?(
               removeHTMLTags(note.body).length > 15
                 ? `${removeHTMLTags(note.body).substring(0, 10)}...`
-                : removeHTMLTags(note.body)
+                : removeHTMLTags(note.body)):'Empty note'
             }
           ></ListItemText>
         </div>
@@ -27,6 +29,7 @@ function SidebarItem({ note, index }) {
           onClick={() => deleteNote(note)}
         ></DeleteRoundedIcon>
       </ListItem>
+      <Divider />
     </div>
   );
 }

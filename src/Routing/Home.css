@@ -1,16 +1,7 @@
 .home {
   display: flex;
   height: 100vh;
+  background-color: #4d4d4d;
 }
 
-.quill {
-  height: calc(100vh - 78px);
-  width: 100%;
-}
-.ql-container {
-  height: 100%;
-  overflow-y: scroll;
-}
-.ql-editor {
-  cursor: text;
-}
+

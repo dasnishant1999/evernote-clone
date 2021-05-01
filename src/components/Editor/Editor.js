@@ -7,7 +7,6 @@ import "./Editor.css";
 import { Context } from "../../contexts/Context";
 
 function Editor() {
-  const [id, setId] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
@@ -16,7 +15,6 @@ function Editor() {
   useEffect(() => {
     setText(selectedNote.body);
     setTitle(selectedNote.title);
-    setId(selectedNote.id);
   }, [selectedNote]);
 
   return (

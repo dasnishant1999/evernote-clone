@@ -4,4 +4,30 @@
 
 .list-content {
   width: 100%;
+  cursor: pointer;
+}
+
+.Mui-selected {
+  background-color: #666 !important;
+}
+
+.MuiListItem-root {
+  background-color: #333;
+}
+
+.MuiListItem-root:hover {
+  background-color: #4d4d4d;
+  transition: 0.5s;
+}
+
+.MuiDivider-root {
+  background-color: #4d4d4d !important;
+}
+
+.MuiTypography-root{
+  color:white !important
+}
+
+.MuiSvgIcon-root{
+  color:white !important;
 }

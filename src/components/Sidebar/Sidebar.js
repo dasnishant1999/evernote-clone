@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import { Button, List } from "@material-ui/core";
-
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Context } from "../../contexts/Context";
 import "./Sidebar.css";
 import SidebarItem from "../SidebarItem/SidebarItem";
@@ -13,15 +13,16 @@ function Sidebar() {
 
   const { notes, addNote } = useContext(Context);
   const { currentUser, logout } = useAuth();
-  console.log(currentUser.email);
+  // console.log(currentUser.email);
 
   return (
     <div className="sidebar">
+      <div className="sidebar-profile">
+        <p>{`${currentUser.email.split("@")[0]}`}</p>
+        <ExitToAppIcon onClick={logout} />
+      </div>
       <div className="sidebar-header">
-        {/* <p>{currentUser.email}</p>
-        <button onClick={logout}>Log Out</button> */}
         <Button
-          className="new-note-btn"
           onClick={() => {
             setaddingNote(!addingNote);
             settitle("");
@@ -30,7 +31,14 @@ function Sidebar() {
           {addingNote ? "Cancel" : "New Note"}
         </Button>
         {addingNote ? (
-          <div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              addNote(title);
+              settitle("");
+              setaddingNote(false);
+            }}
+          >
             <input
               className="new-note-input"
               type="text"
@@ -39,17 +47,8 @@ function Sidebar() {
                 settitle(e.target.value);
               }}
             ></input>
-            <Button
-              className="new-note-add-btn"
-              onClick={() => {
-                addNote(title);
-                settitle("");
-                setaddingNote(false);
-              }}
-            >
-              Add Note
-            </Button>
-          </div>
+            <Button type="submit">Add Note</Button>
+          </form>
         ) : null}
       </div>
       {notes && (

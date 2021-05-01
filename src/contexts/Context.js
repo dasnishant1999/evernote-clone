@@ -24,14 +24,14 @@ function ContextProvider({ children }) {
           data["id"] = doc.id;
           return data;
         });
-        console.log("effect");
+        // console.log("effect");
         setNotes(notes);
       });
     return () => {};
   }, []);
 
   const addNote = async (noteTitle) => {
-    if (!noteTitle) {
+    if (noteTitle.trim()==="") {
       return alert("Note should have a title");
     }
     await db.collection("users").doc(currentUser.uid).collection("notes").add({

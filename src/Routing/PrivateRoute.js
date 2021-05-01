@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useAuth } from "../contexts/AuthProvider";
+import ContextProvider from "../contexts/Context";
 
 function PrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
@@ -10,7 +11,9 @@ function PrivateRoute({ component: Component, ...rest }) {
       {...rest}
       render={(props) => {
         return currentUser ? (
-          <Component {...props} />
+          <ContextProvider>
+            <Component {...props} />
+          </ContextProvider>
         ) : (
           <Redirect to="/signin" />
         );

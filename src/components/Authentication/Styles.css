@@ -22,13 +22,13 @@
 
 .sign-up input:focus {
   outline: none;
-  box-shadow: 0 0 8px #c4b5fd;
+  box-shadow: 0 0 3px #059669;
 }
 
 .sign-up button {
   width: 100%;
   margin: 1.5rem 0;
-  background-color: #8b5cf6;
+  background-color: #00a82d;
   color: white;
   border: none;
   height: 30px;

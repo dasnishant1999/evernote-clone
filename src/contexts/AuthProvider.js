@@ -14,7 +14,7 @@ function AuthContextProvider({ children }) {
     const unsub = auth.onAuthStateChanged((user) => {
       setcurrentUser(user);
       setloading(false);
-      console.log("inside auth changed");
+      // console.log("inside auth changed");
     });
     return unsub;
   }, []);
