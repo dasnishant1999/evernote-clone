@@ -25,13 +25,14 @@ function ContextProvider({ children }) {
           return data;
         });
         // console.log("effect");
+        //Todo: it is fetching all docs, try to optimize it to minimial reads
         setNotes(notes);
       });
     return () => {};
-  }, []);
+  }, [currentUser]);
 
   const addNote = async (noteTitle) => {
-    if (noteTitle.trim()==="") {
+    if (noteTitle.trim() === "") {
       return alert("Note should have a title");
     }
     await db.collection("users").doc(currentUser.uid).collection("notes").add({
@@ -46,6 +47,19 @@ function ContextProvider({ children }) {
   const selectNote = (note, index) => {
     setSelectedNoteIndex(index);
     setSelectedNote(note);
+  };
+
+  const deleteNote = (note) => {
+    if (window.confirm(`Are you sure you want to delete ${note.title}?`)) {
+      db.collection("users")
+        .doc(currentUser.uid)
+        .collection("notes")
+        .doc(note.id)
+        .delete();
+      console.log("delete");
+      setSelectedNote(null);
+      setSelectedNoteIndex(null);
+    }
   };
 
   //debounce
@@ -88,23 +102,12 @@ function ContextProvider({ children }) {
 
   const updateBody = (body) => {
     bodyRef.current = body;
-    debounceBody();
+    if (body !== selectedNote.body) {
+      debounceBody();
+    }
   };
 
   //debounce
-
-  const deleteNote = (note) => {
-    if (window.confirm(`Are you sure you want to delete ${note.title}?`)) {
-      db.collection("users")
-        .doc(currentUser.uid)
-        .collection("notes")
-        .doc(note.id)
-        .delete();
-      console.log("delete");
-      setSelectedNote(null);
-      setSelectedNoteIndex(null);
-    }
-  };
 
   return (
     <Context.Provider

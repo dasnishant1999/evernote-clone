@@ -25,7 +25,6 @@ function SidebarItem({ note, index }) {
           ></ListItemText>
         </div>
         <DeleteRoundedIcon
-          // style={{ marginLeft: "auto" }}
           onClick={() => deleteNote(note)}
         ></DeleteRoundedIcon>
       </ListItem>

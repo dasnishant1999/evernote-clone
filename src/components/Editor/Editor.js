@@ -24,7 +24,7 @@ function Editor() {
         <input
           className="titleInput"
           placeholder="Note title"
-          value={title ? title : ""}
+          value={title}
           onChange={(e) => {
             setTitle(e.target.value);
             updateTitle(e.target.value);
