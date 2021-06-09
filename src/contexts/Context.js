@@ -101,8 +101,8 @@ function ContextProvider({ children }) {
   );
 
   const updateBody = (body) => {
-    bodyRef.current = body;
     if (body !== selectedNote.body) {
+      bodyRef.current = body;
       debounceBody();
     }
   };
